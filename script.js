@@ -7,7 +7,7 @@ let voices = [];
 let utterance = new SpeechSynthesisUtterance();
 
 function textToSpeak(){
-    utterance.text = $text.value;
+    utterance.text = $text.textContent;
     window.speechSynthesis.speak(utterance);
 }
 
