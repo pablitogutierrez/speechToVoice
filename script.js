@@ -20,12 +20,12 @@ let voices = [];
 let utterance = new SpeechSynthesisUtterance();
 
 function textToSpeak(){
-    utterance.text = $text_r.textContent;
+    utterance.text = $text_r.value;
     window.speechSynthesis.speak(utterance);
 }
 
 function textToSpeak_e(){
-    utterance.text = $text.textContent;
+    utterance.text = $text.value;
     window.speechSynthesis.speak(utterance);
 }
 

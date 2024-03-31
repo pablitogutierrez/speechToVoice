@@ -16,20 +16,23 @@ $eje = mysqli_query($con,$info);
     <script defer src="qr.js"></script>
     <title>Texto a voz</title>
     <link rel="stylesheet" type="text/css" href="voice.css">
+    <script src="https://kit.fontawesome.com/69bd2e7207.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <form class="form">
         <select id="languages"></select>
-        <!--
-        <select id="container_voices"></select>
-        -->
+        <select id="container_voices" hidden></select>
         <?php   
             while($asu=mysqli_fetch_array($eje)){ ?>
-                <input type="text" id="from-text" readonly value="<?php echo $asu['variante_nombre'] . " " . $asu['variante_desc'];?>"></textarea>
+                <p id="from-text">
+                    <?php echo $asu['variante_nombre']?> 
+                    <br>
+                    <?php echo $asu['variante_desc'];?>
+                </p>
         <?php } ?>
         <input type="text" id="to-text" hidden>
-        <button type="button" id="btn">Hablar</button> 
-        <button type="button" id="btn-2">Parar</button>
+        <button type="button" id="btn">Hablar <i class="fa-solid fa-volume-high"></i></button> 
+        <button type="button" id="btn-2">Parar <i class="fa-solid fa-volume-xmark"></i></button>
     </form>
 </body>
 </html>
