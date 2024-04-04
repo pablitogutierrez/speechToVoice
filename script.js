@@ -25,7 +25,7 @@ function textToSpeak(){
 }
 
 function textToSpeak_e(){
-    utterance.text = $text.value;
+    utterance.text = $text.textContent;
     window.speechSynthesis.speak(utterance);
 }
 
@@ -55,6 +55,8 @@ document.addEventListener("change", (e) => {
     if(e.target === $container_voices){
         utterance.voice = voices.find(voice => voice.name === e.target.value);
     } 
+
+    $text_r.value = ""; 
 })
 
 document.addEventListener("click", (e) => {
@@ -75,7 +77,7 @@ for(value in options){
 } 
 
 $btn.addEventListener("click", () => {
-    let apiUrl = `https://api.mymemory.translated.net/get?q=${$text.value}&langpair=es-ES|${countries_reverse[sel_lang.value]}`;
+    let apiUrl = `https://api.mymemory.translated.net/get?q=${$text.textContent}&langpair=es-ES|${countries_reverse[sel_lang.value]}`;
     fetch(apiUrl).then(res => res.json()).then(data => {
         $text_r.value = data.responseData.translatedText;
         data.matches.forEach(data => {
@@ -83,5 +85,3 @@ $btn.addEventListener("click", () => {
         });
     });
 });
-
-
